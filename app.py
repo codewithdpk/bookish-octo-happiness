@@ -16,4 +16,4 @@ def uploadFile():
     file = request.files['image'].read()
 
     output = BytesIO(remove(file))
-    return send_file(output.getbuffer(), mimetype='image/png')
+    return output.getbuffer()
