@@ -16,7 +16,7 @@ function App() {
       const formData = new FormData();
       formData.append("image", file);
 
-      const res = await axios.post("http://127.0.0.1:5000/upload", formData);
+      const res = await axios.post("https://remove-bg.onrender.com/upload", formData);
       if (res?.status === 200) {
         setOutputFile(res?.data);
       }
@@ -43,7 +43,7 @@ function App() {
         </Grid>
         <Grid item sm={12} md={6} lg={6}>
           <Stack direction="column">
-            <Typography variant="subtitle1">Input:</Typography>
+            <Typography variant="subtitle1">Output:</Typography>
             {outputFile && (
               <img src={`data:image/jpeg;base64,${outputFile}`} alt="file" />
             )}
