@@ -1,7 +1,8 @@
 import base64
 from io import BytesIO
-from rembg import remove
+
 from flask import Flask, request, send_file
+from rembg import remove
 
 app = Flask(__name__)
 
@@ -14,6 +15,5 @@ def main():
 @app.route('/upload', methods=['POST'])
 def uploadFile():
     file = request.files['image'].read()
-
     output = BytesIO(remove(file))
-    return output.getbuffer()
+    return base64.b64encode(output.getbuffer().tobytes())
